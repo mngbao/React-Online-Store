@@ -1,6 +1,12 @@
 import Head from "next/head";
-
+import { useQuery } from "urql";
+import { PRODUCT_QUERY } from "@/lib/query";
 export default function Home() {
+  const [results] = useQuery({ query: PRODUCT_QUERY });
+  const { data, loading, error } = results;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  console.log(data);
   return (
     <>
       <Head>
