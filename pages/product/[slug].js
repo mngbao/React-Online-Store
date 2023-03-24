@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "urql";
 import { GET_PRODUCT_QUERY } from "@/lib/query";
@@ -9,9 +10,19 @@ import {
 } from "@/styles/ProductDetails";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { useStateContext } from "@/lib/context";
+import toast from "react-hot-toast";
 
 export default function ProductDetails() {
-  const { qty, increaseQty, decreaseQty, onAdd } = useStateContext();
+  const { qty, setQty, increaseQty, decreaseQty, onAdd, cartItems } =
+    useStateContext();
+
+  useEffect(() => {
+    setQty(1);
+  }, [cartItems]);
+
+  const notify = () => {
+    toast.success(`${title} added to your cart`);
+  };
   //fecth slug name
   const router = useRouter();
   const { slug } = router.query;
@@ -43,7 +54,12 @@ export default function ProductDetails() {
             <AiFillPlusCircle onClick={increaseQty} />
           </button>
         </Quantity>
-        <Buy onClick={() => onAdd(data.products.data[0].attributes, qty)}>
+        <Buy
+          onClick={() => {
+            onAdd(data.products.data[0].attributes, qty);
+            notify();
+          }}
+        >
           Add to cart
         </Buy>
       </ProductInfo>
