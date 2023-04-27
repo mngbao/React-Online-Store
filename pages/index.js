@@ -2,14 +2,17 @@ import Head from "next/head";
 import { useQuery } from "urql";
 import { PRODUCT_QUERY } from "@/lib/query";
 import Products from "../components/Products";
-import { Gallery } from "@/styles/Gallery";
-
+import { Gallery, GalleryImages, GalleryText } from "@/styles/Gallery";
+import Hero from "@/components/Hero";
+import Deals from "@/components/Deals";
+import { Main } from "@/styles/Hero";
 export default function Home() {
   const [results] = useQuery({ query: PRODUCT_QUERY });
   const { data, fetching, error } = results;
   if (fetching) return <p>Loading...</p>;
   if (error) return <p>Oh noo... {error.message}</p>;
   const products = data.products.data;
+  const product = products[0];
 
   return (
     <>
@@ -19,13 +22,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+
+      <Main>
+        <Hero />
+        <Deals deals={product} />
         <Gallery>
-          {products.map((product) => (
-            <Products key={product.slug} product={product} />
-          ))}
+          <GalleryText>
+            <h1>Best Sellers</h1>
+            <p>Explore the trending range of Styled.</p>
+          </GalleryText>
+          <GalleryImages>
+            {products.map((product) => (
+              <Products key={product.slug} product={product} />
+            ))}
+          </GalleryImages>
         </Gallery>
-      </main>
+      </Main>
     </>
   );
 }

@@ -17,7 +17,7 @@ export const CartStyle = styled(motion.div)`
   width: min(2/3fr, 100vw);
   background: #f1f1f1;
   padding: 2rem 5rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
 `;
 

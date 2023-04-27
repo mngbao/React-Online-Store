@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
 export const NavStyles = styled.nav`
+  padding: 0 6%;
   min-height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
+  position: relative;
+  z-index: 10;
+  overflow:hidden;
   a {
     font-size: 1.2rem;
   }
   color: black;
+  background-color: #f2f2f2;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1); 
 `;
 
 export const NavItems = styled.div`
