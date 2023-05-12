@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Foot = styled.div`
   background-color: #2d2d2d;
-  position: absolute;
-  bottom: 0;
+  position: block;
   left: 0;
+  bottom: 0;
   overflow: hidden;
   width: 100%;
   .footer-links {

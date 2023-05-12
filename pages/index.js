@@ -9,7 +9,7 @@ import { Main } from "@/styles/Hero";
 export default function Home() {
   const [results] = useQuery({ query: PRODUCT_QUERY });
   const { data, fetching, error } = results;
-  if (fetching) return <p>Loading...</p>;
+  if (fetching) return <p style={{ height: "100vh" }}>Loading...</p>;
   if (error) return <p>Oh noo... {error.message}</p>;
   const products = data.products.data;
   const product = products[0];

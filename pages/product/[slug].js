@@ -7,6 +7,7 @@ import {
   ProductInfo,
   Quantity,
   Buy,
+  ProductImage,
 } from "@/styles/ProductDetails";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { useStateContext } from "@/lib/context";
@@ -33,13 +34,18 @@ export default function ProductDetails() {
     variables: { slug },
   });
   const { data, fetching, error } = results;
-  if (fetching) return <p>Loading...</p>;
+  if (fetching) return <p style={{ height: "100vh" }}>Loading...</p>;
   if (error) return <p>Oh noo... {error.message}</p>;
   const { title, description, image } = data.products.data[0].attributes;
 
   return (
     <DetailsStyle>
-      <img src={image.data.attributes.formats.medium.url} alt={title} />
+      <ProductImage
+        src={image.data.attributes.formats.medium.url}
+        alt={title}
+      />
+      <img src="" alt="" />
+
       <ProductInfo>
         <h3>{title}</h3>
         <p>{description}</p>

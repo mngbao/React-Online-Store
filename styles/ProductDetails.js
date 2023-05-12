@@ -1,22 +1,25 @@
 import styled from "styled-components";
 
 export const DetailsStyle = styled.div`
+  margin: 0 5rem;
+  padding: 5rem 0;
   display: flex;
-  justify-content: space-between;
-  margin-top: 5rem;
-  img {
-    width: 40%;
+  justify-content: center;
+  height: 90vh;
+  gap: 3rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
 export const ProductInfo = styled.div`
-  width: 40%;
-  button {
-    font-size: 1rem;
-    font-weight: medium;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  flex-basis: 1;
+`;
+
+export const ProductImage = styled.img`
+  flex-basis: 1;
 `;
 
 export const Quantity = styled.div`
@@ -46,8 +49,11 @@ export const Quantity = styled.div`
 `;
 
 export const Buy = styled.button`
-  width: 100%;
   background: var(--primary);
+  padding: 1rem 2rem;
+  width: 100%;
   color: white;
-  font-weight: 500;
+  margin-top: 2rem;
+  cursor: pointer;
+  border: none;
 `;
