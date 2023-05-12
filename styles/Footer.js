@@ -5,7 +5,6 @@ export const Foot = styled.div`
   position: block;
   left: 0;
   bottom: 0;
-  overflow: hidden;
   width: 100%;
   .footer-links {
     height: 5rem;

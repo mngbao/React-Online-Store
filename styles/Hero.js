@@ -71,9 +71,21 @@ export const Text = styled.div`
   display: flex;
   flex-direction: column;
   padding: 4em 2em;
+  @media (max-width: 768px) {
+    position: relative;
+    margin-right: unset;
+    left: unset;
+    top: unset;
+    transform: unset;
+    margin-top: 2rem;
+  }
+
   h2 {
     color: white;
     font-size: 2rem;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
   p {
     color: white;
@@ -89,6 +101,11 @@ export const Text = styled.div`
 export const Photo = styled.div`
   position: relative;
   margin-left: 10em;
+  @media (max-width: 768px) {
+    margin-left: unset;
+    display: flex;
+    flex-direction: column-reverse;
+  }
   span {
     background-color: #2d2d2d;
     color: #f5f5dc;
@@ -102,9 +119,15 @@ export const Photo = styled.div`
     position: absolute;
     bottom: -8%;
     right: -12%;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
   height: 75%;
   img {
     height: 100%;
+    @media (max-width: 768px) {
+      height: 70%;
+    }
   }
 `;
